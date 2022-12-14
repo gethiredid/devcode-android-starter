@@ -9,17 +9,12 @@
     android:gravity="center"
     android:paddingHorizontal="24dp">
 
-    <!-- TODO:
-    Uncomment code di bawah dan tambahkan parameter [src] untuk meload gambar,
-    lalu masukan [devcode_logo] untuk value dari property [src] (file terletak pada folder [res/drawable])
-    -->
-    <!--<ImageView
+    <ImageView
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:contentDescription="devcode-logo"
-        />-->
+        android:src="@drawable/devcode_logo"/>
 
-    <!-- TODO: Tambahkan property [content-description] lalu isi dengan "devcode-title" -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,5 +23,6 @@
         android:textColor="@color/black"
         android:fontFamily="@font/poppins_semibold"
         android:textAlignment="center"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:contentDescription="devcode-title"/>
 </LinearLayout>

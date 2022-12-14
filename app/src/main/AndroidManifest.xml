@@ -16,11 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DevcodeAndroid"
         tools:targetApi="31">
-        <!-- TODO:
-        Uncomment code di bawah ini untuk menambahkan [HelloActivity] ke dalam manifest agar bisa
-        ditampilkan pada aplikasi.
-        -->
-        <!--<activity
+        <activity
             android:name=".modules.hello.HelloActivity"
             android:exported="true">
             <intent-filter>
@@ -28,7 +24,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>-->
+        </activity>
     </application>
 
 </manifest>
