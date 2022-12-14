@@ -16,9 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DevcodeAndroid"
         tools:targetApi="31">
-        <activity
+        <!-- TODO: Uncomment code di bawah untuk menambahkan [HomeActivity] agar bisa di akses oleh aplikasi. -->
+        <!--<activity
             android:name=".modules.home.HomeActivity"
-            android:exported="false" />
+            android:exported="false" />-->
         <activity
             android:name=".modules.hello.HelloActivity"
             android:exported="true">

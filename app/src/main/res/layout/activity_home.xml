@@ -9,12 +9,18 @@
     android:gravity="center"
     android:paddingHorizontal="24dp">
 
+    <!-- TODO:
+    Tambahkan property [src] dan isi dengan value dari devcode_logo
+    yang berada pada folder res/drawable -->
     <ImageView
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:contentDescription="devcode-logo"
-        android:src="@drawable/devcode_logo"/>
+        android:contentDescription="devcode-logo" />
 
+    <!-- TODO:
+    Tambahkan property [content-description] dan isi dengan value
+    "devcode-title". Ini bertujuan agar automation test dapat mengenali
+    component yang anda tulis -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,6 +29,5 @@
         android:textColor="@color/black"
         android:fontFamily="@font/poppins_semibold"
         android:textAlignment="center"
-        android:layout_marginTop="20dp"
-        android:contentDescription="devcode-title"/>
+        android:layout_marginTop="20dp" />
 </LinearLayout>
