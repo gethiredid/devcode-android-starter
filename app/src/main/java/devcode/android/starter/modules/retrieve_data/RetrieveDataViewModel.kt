@@ -1,18 +1,26 @@
 package devcode.android.starter.modules.retrieve_data
 
 import androidx.lifecycle.MutableLiveData
+import com.google.gson.Gson
 import devcode.android.starter.base.BaseViewModel
 import devcode.android.starter.model.ContactItem
 import devcode.android.starter.model.ContactModel
 import devcode.android.starter.model.CreateContactRequest
+import devcode.android.starter.model.ErrorModel
 import devcode.android.starter.service.ApiRepository
 import devcode.android.starter.utils.RequestStatus
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import retrofit2.HttpException
+
+enum class CreateEditContactResult {
+    DUPLICATE, ERROR, IDLE
+}
 
 class RetrieveDataViewModel(private var apiRepository: ApiRepository): BaseViewModel() {
     var contactStatus = MutableLiveData(RequestStatus.IDLE)
     var createContactStatus = MutableLiveData(RequestStatus.IDLE)
+    var createEditContactResult = MutableLiveData(CreateEditContactResult.IDLE)
 
     var contactData: ContactModel? = null
     var newContact: ContactItem? = null
@@ -54,7 +62,23 @@ class RetrieveDataViewModel(private var apiRepository: ApiRepository): BaseViewM
 
                     createContactStatus.value = RequestStatus.SUCCESS
                 },
-                { createContactStatus.value = RequestStatus.ERROR }
+                { cause ->
+                    createContactStatus.value = RequestStatus.ERROR
+                    // Catch error response from Retrofit
+                    if (cause is HttpException) {
+                        try {
+                            val errorResponse = Gson().fromJson(cause.response()?.errorBody()?.charStream(), ErrorModel::class.java)
+
+                            if (errorResponse.message == "full_name, phone_number, and email is duplicate") {
+                                createEditContactResult.value = CreateEditContactResult.DUPLICATE
+                            }
+                        } catch (e: Exception) {
+                            createEditContactResult.value = CreateEditContactResult.ERROR
+                        }
+                    } else {
+                        createEditContactResult.value = CreateEditContactResult.ERROR
+                    }
+                }
             ).addToDisposable()
     }
 }

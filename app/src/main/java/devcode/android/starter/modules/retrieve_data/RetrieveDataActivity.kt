@@ -1,14 +1,20 @@
 package devcode.android.starter.modules.retrieve_data
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
-import androidx.core.widget.addTextChangedListener
+import android.view.ViewGroup
+import android.view.Window
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import devcode.android.starter.base.BaseActivity
 import devcode.android.starter.databinding.ActivityRetrieveDataBinding
+import devcode.android.starter.databinding.SuccessCreateEditContactDialogBinding
+import devcode.android.starter.model.ContactItem
 import devcode.android.starter.utils.RequestStatus
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -54,7 +60,14 @@ class RetrieveDataActivity : BaseActivity() {
 
                 retrieveDataViewModel.newContact?.let { contact ->
                     contactAdapter.insertContact(contact)
+                    showCreateEditResultDialog(contact)
                 }
+            }
+        }
+
+        retrieveDataViewModel.createEditContactResult.observe(this) { status ->
+            if (status == CreateEditContactResult.DUPLICATE) {
+                showCreateEditResultDialog(ContactItem(email = retrieveDataViewModel.email, fullName = retrieveDataViewModel.fullname, phoneNumber = retrieveDataViewModel.phoneNumber))
             }
         }
     }
@@ -88,5 +101,34 @@ class RetrieveDataActivity : BaseActivity() {
     private fun initRecyclerView() {
         binding.rvContact.adapter = contactAdapter
         binding.rvContact.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun showCreateEditResultDialog(contactItem: ContactItem) {
+        val dialog = Dialog(this)
+        val binding = SuccessCreateEditContactDialogBinding.inflate(LayoutInflater.from(this))
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(binding.root)
+        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        dialog.window?.setBackgroundDrawable(InsetDrawable(ColorDrawable(Color.TRANSPARENT), 48))
+
+        if (retrieveDataViewModel.createEditContactResult.value == CreateEditContactResult.DUPLICATE) {
+            binding.deleteTitle.text = "Data yang anda masukkan sudah terdaftar di server!"
+        }
+
+        if (retrieveDataViewModel.createContactStatus.value == RequestStatus.SUCCESS) {
+            binding.deleteTitle.text = "Berhasil memasukkan data ke server!"
+        }
+
+        binding.fullname.text = contactItem.fullName
+        binding.phone.text = contactItem.phoneNumber
+        binding.email.text = contactItem.email
+
+        binding.cancelButton.setOnClickListener {
+            dialog.dismiss()
+            resetInput()
+        }
+
+        dialog.show()
     }
 }
