@@ -17,6 +17,9 @@
         android:theme="@style/Theme.DevcodeAndroid"
         tools:targetApi="31">
         <activity
+            android:name=".modules.retrieve_data.RetrieveDataActivity"
+            android:exported="false" />
+        <activity
             android:name=".modules.home.HomeActivity"
             android:exported="false" />
         <activity
