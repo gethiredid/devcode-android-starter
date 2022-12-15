@@ -24,8 +24,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun initView() {
         binding.routerButton.setOnClickListener {
-            val intent = Intent(this, RetrieveDataActivity::class.java)
-            startActivity(intent)
+            // TODO: Tuliskan code untuk melakukan routing ke halaman RetrieveDataActivity
         }
     }
 }

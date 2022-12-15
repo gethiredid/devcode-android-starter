@@ -13,20 +13,21 @@ class RetrieveDataViewModel(private var apiRepository: ApiRepository): BaseViewM
     var contactData: ContactModel? = null
 
     fun getContactList() {
-        if (contactStatus.value == RequestStatus.LOADING) return
-
-        contactStatus.value = RequestStatus.LOADING
-
-        apiRepository.getContactList()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                {
-                    contactData = it
-
-                    contactStatus.value = RequestStatus.SUCCESS
-                },
-                { contactStatus.value = RequestStatus.ERROR }
-            ).addToDisposable()
+//        TODO: Uncomment code di bawah untuk melakukan request API guna mendapatkan contact list dari server.
+//        if (contactStatus.value == RequestStatus.LOADING) return
+//
+//        contactStatus.value = RequestStatus.LOADING
+//
+//        apiRepository.getContactList()
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe(
+//                {
+//                    contactData = it
+//
+//                    contactStatus.value = RequestStatus.SUCCESS
+//                },
+//                { contactStatus.value = RequestStatus.ERROR }
+//            ).addToDisposable()
     }
 }
