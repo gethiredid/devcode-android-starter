@@ -1,7 +1,11 @@
 package devcode.android.starter.modules.retrieve_data
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import devcode.android.starter.base.BaseActivity
 import devcode.android.starter.databinding.ActivityRetrieveDataBinding
@@ -14,7 +18,7 @@ class RetrieveDataActivity : BaseActivity() {
     private lateinit var binding: ActivityRetrieveDataBinding
 
     private val contactAdapter: ContactAdapter by inject { parametersOf(this) }
-    private val detailGroupViewModel: RetrieveDataViewModel by inject { parametersOf(this) }
+    private val retrieveDataViewModel: RetrieveDataViewModel by inject { parametersOf(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,25 +34,43 @@ class RetrieveDataActivity : BaseActivity() {
     }
 
     private fun requestApi() {
-        detailGroupViewModel.getContactList()
+        retrieveDataViewModel.getContactList()
     }
 
     private fun observeData() {
-        detailGroupViewModel.contactStatus.observe(this) { status ->
+        retrieveDataViewModel.contactStatus.observe(this) { status ->
             if (status == RequestStatus.SUCCESS) {
-                detailGroupViewModel.contactData?.let { contactData ->
+                retrieveDataViewModel.contactData?.let { contactData ->
                     contactAdapter.updateList((contactData.data ?: listOf()).toMutableList())
                 }
             }
 
             binding.progressBar.visibility = if (status == RequestStatus.LOADING) View.VISIBLE else View.GONE
         }
+
+        retrieveDataViewModel.createContactStatus.observe(this) { status ->
+            if (status == RequestStatus.SUCCESS) {
+                retrieveDataViewModel.newContact?.let { contact ->
+                    contactAdapter.insertContact(contact)
+                }
+            }
+        }
     }
 
     private fun initView() {
         supportActionBar?.hide()
 
+        binding.buttonSubmit.setOnClickListener { retrieveDataViewModel.createContact() }
+
         initRecyclerView()
+
+        initForm()
+    }
+
+    private fun initForm() {
+        binding.inputNama.doOnTextChanged { text, _, _, _ -> retrieveDataViewModel.fullname = text.toString() }
+        binding.inputTelepon.doOnTextChanged { text, _, _, _ -> retrieveDataViewModel.phoneNumber = text.toString() }
+        binding.inputEmail.doOnTextChanged { text, _, _, _ -> retrieveDataViewModel.email = text.toString() }
     }
 
     private fun initRecyclerView() {

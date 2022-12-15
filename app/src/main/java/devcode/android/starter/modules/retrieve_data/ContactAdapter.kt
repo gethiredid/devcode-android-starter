@@ -15,6 +15,11 @@ class ContactAdapter(val context: Context) : RecyclerView.Adapter<ContactAdapter
         notifyDataSetChanged()
     }
 
+    fun insertContact(item: ContactItem) {
+        contacts.add(item)
+        notifyItemInserted(contacts.size - 1)
+    }
+
     inner class ContactViewHolder(private val binding: ContactListItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
             val contact = contacts[position]
@@ -35,5 +40,5 @@ class ContactAdapter(val context: Context) : RecyclerView.Adapter<ContactAdapter
     }
 
     override fun getItemCount(): Int = contacts.size
-    override fun getItemId(position: Int): Long = (contacts[position].id ?: 0).toLong()
+    override fun getItemId(position: Int): Long = position.toLong()
 }
