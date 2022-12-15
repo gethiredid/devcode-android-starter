@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.19479166666666667" />
         <entry key="app/src/main/res/layout/activity_retrieve_data.xml" value="0.22" />
         <entry key="app/src/main/res/layout/contact_list_item.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/success_create_edit_contact_dialog.xml" value="0.21979166666666666" />
       </map>
     </option>
   </component>

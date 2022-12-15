@@ -15,7 +15,7 @@ data class ContactItem(
     @SerializedName("full_name")
     val fullName: String?,
     @SerializedName("id")
-    val id: Int?,
+    val id: Int? = null,
     @SerializedName("phone_number")
     val phoneNumber: String?
 )
