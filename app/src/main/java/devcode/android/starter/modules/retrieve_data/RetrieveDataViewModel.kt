@@ -45,16 +45,16 @@ class RetrieveDataViewModel(private var apiRepository: ApiRepository): BaseViewM
 
         createContactStatus.value = RequestStatus.LOADING
 
-        apiRepository.createContact(CreateContactRequest(fullname, phoneNumber, email))
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                {
-                    newContact = it.data
+        // TODO: Panggil function [createContact] yang terdapat pada class ApiRepository seperti pada function [getContactList] di atas.
 
-                    createContactStatus.value = RequestStatus.SUCCESS
-                },
-                { createContactStatus.value = RequestStatus.ERROR }
-            ).addToDisposable()
+        // TODO: Masukkan parameter kedalam function [createContact] yang berisi class [CreateContactRequest].
+
+        // TODO: Masukkan parameter [fullname, phoneNumber, email] sesuai urutan dari class CreateContactRequest.
+
+        // TODO: Copy code berikut ini kedalam lambda [onSuccess] pada function subscribe seperti contoh function [getContactList]
+        /*
+        newContact = it.data
+        createContactStatus.value = RequestStatus.SUCCESS
+        */
     }
 }

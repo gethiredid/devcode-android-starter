@@ -1,10 +1,7 @@
 package devcode.android.starter.modules.retrieve_data
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
-import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import devcode.android.starter.base.BaseActivity
@@ -72,7 +69,13 @@ class RetrieveDataActivity : BaseActivity() {
     private fun initView() {
         supportActionBar?.hide()
 
-        binding.buttonSubmit.setOnClickListener { retrieveDataViewModel.createContact() }
+        binding.buttonSubmit.setOnClickListener {
+            // TODO: Uncomment code di bawah untuk memanggil function [createContact] yang berada
+            //  di class [RetrieveDataViewModel] menggunakan variabel [retrieveDataViewModel] yang
+            //  sudah di define sebelumnya.
+
+            // retrieveDataViewModel.createContact()
+        }
 
         initRecyclerView()
 
@@ -82,7 +85,9 @@ class RetrieveDataActivity : BaseActivity() {
     private fun initForm() {
         binding.inputNama.doOnTextChanged { text, _, _, _ -> retrieveDataViewModel.fullname = text.toString() }
         binding.inputTelepon.doOnTextChanged { text, _, _, _ -> retrieveDataViewModel.phoneNumber = text.toString() }
-        binding.inputEmail.doOnTextChanged { text, _, _, _ -> retrieveDataViewModel.email = text.toString() }
+
+        // TODO: Tulis code untuk mendapatkan value dari [inputEmail] seperti pada code di atas.
+        // TODO: Ubah variabel [email] yang berada pada class RetrieveDataViewModel dengan cara seperti code di atas.
     }
 
     private fun initRecyclerView() {
