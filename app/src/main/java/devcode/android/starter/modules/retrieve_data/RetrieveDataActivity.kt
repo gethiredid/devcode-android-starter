@@ -50,11 +50,23 @@ class RetrieveDataActivity : BaseActivity() {
 
         retrieveDataViewModel.createContactStatus.observe(this) { status ->
             if (status == RequestStatus.SUCCESS) {
+                resetInput()
+
                 retrieveDataViewModel.newContact?.let { contact ->
                     contactAdapter.insertContact(contact)
                 }
             }
         }
+    }
+
+    private fun resetInput() {
+        binding.inputNama.text.clear()
+        binding.inputTelepon.text.clear()
+        binding.inputEmail.text.clear()
+
+        retrieveDataViewModel.fullname = ""
+        retrieveDataViewModel.phoneNumber = ""
+        retrieveDataViewModel.email = ""
     }
 
     private fun initView() {
