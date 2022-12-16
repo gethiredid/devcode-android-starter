@@ -10,6 +10,6 @@ import org.koin.dsl.module
 val viewControllerModule = module {
     scope(named<RetrieveDataActivity>()) {
         scoped { RetrieveDataViewModel(apiRepository = get()) }
-        scoped { ContactAdapter(androidContext()) }
+        scoped { (activity: RetrieveDataActivity) -> ContactAdapter(context = androidContext(), activity) }
     }
 }

@@ -10,7 +10,7 @@ interface ApiRepository {
     fun getContactList(): Single<ContactModel>
     fun createContact(body: CreateContactRequest): Single<CreateContactModel>
     fun deleteContact(contactId: Int): Single<ResponseBody>
-    fun patchContact(contactId: Int, body: CreateContactRequest): Single<CreateContactModel>
+    fun updateContact(contactId: Int, body: CreateContactRequest): Single<CreateContactModel>
 }
 
 class ApiRepositoryImpl(private val apiServices: ApiServices) : ApiRepository {
@@ -20,5 +20,5 @@ class ApiRepositoryImpl(private val apiServices: ApiServices) : ApiRepository {
 
     override fun deleteContact(contactId: Int): Single<ResponseBody> = apiServices.deleteContact(contactId)
 
-    override fun patchContact(contactId: Int, body: CreateContactRequest): Single<CreateContactModel> = apiServices.patchContact(contactId, body)
+    override fun updateContact(contactId: Int, body: CreateContactRequest): Single<CreateContactModel> = apiServices.updateContact(contactId, body)
 }

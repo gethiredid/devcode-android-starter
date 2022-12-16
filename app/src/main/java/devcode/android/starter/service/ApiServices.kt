@@ -21,8 +21,8 @@ interface ApiServices {
         @Path("contactId") contactId: Int,
     ): Single<ResponseBody>
 
-    @PATCH("/contacts/{contactId}")
-    fun patchContact(
+    @PUT("/contacts/{contactId}")
+    fun updateContact(
         @Path("contactId") contactId: Int,
         @Body body: CreateContactRequest
     ): Single<CreateContactModel>
