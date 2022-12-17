@@ -39,18 +39,21 @@ class RetrieveDataViewModel(private var apiRepository: ApiRepository): BaseViewM
     fun errorInput(key: String): String? {
         if (validateInput.value == false) return null
 
-        return when (key) {
-            "fullname" -> if (fullname.trim().isEmpty()) "Field nama tidak boleh kosong" else null
-            "phone" -> if (phoneNumber.trim().isEmpty()) "Field nomor telephone tidak boleh kosong" else if (!Patterns.PHONE.matcher(phoneNumber.trim()).matches()) "Format nomor telepon tidak sesuai" else null
-            "email" -> if (email.trim().isEmpty()) "Field email tidak boleh kosong" else if (!Patterns.EMAIL_ADDRESS.matcher(email.trim()).matches()) "Format email tidak sesuai" else null
-            else -> null
-        }
+//        TODO: Uncomment code di bawah yang berfungsi untuk menampilkan pesan error berdasarkan ketentuan validasi
+//        return when (key) {
+//            "fullname" -> if (fullname.trim().isEmpty()) "Field nama tidak boleh kosong" else null
+//            "phone" -> if (phoneNumber.trim().isEmpty()) "Field nomor telephone tidak boleh kosong" else if (!Patterns.PHONE.matcher(phoneNumber.trim()).matches()) "Format nomor telepon tidak sesuai" else null
+//            "email" -> if (email.trim().isEmpty()) "Field email tidak boleh kosong" else if (!Patterns.EMAIL_ADDRESS.matcher(email.trim()).matches()) "Format email tidak sesuai" else null
+//            else -> null
+//        }
     }
 
     fun checkForm(): Boolean {
         validateInput.value = true
 
-        return  errorInput("fullname") != null || errorInput("phone") != null || errorInput("email") != null
+//        TODO: Code di bawah masih kurang validasi untuk email, tolong tulis code yang berfungsi untuk validasi email
+//         seperti pada code di bawah
+        return  errorInput("fullname") != null || errorInput("phone") != null
     }
 
     fun getContactList() {

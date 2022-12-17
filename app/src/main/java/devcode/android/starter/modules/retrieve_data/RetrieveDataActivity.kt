@@ -98,16 +98,18 @@ class RetrieveDataActivity : BaseActivity(), ContactAdapterInterface {
 
         retrieveDataViewModel.validateInput.observe(this) { validate ->
             val errorFullname = retrieveDataViewModel.errorInput("fullname")
-            val errorPhone = retrieveDataViewModel.errorInput("phone")
-            val errorEmail = retrieveDataViewModel.errorInput("email")
+//            TODO: Buat 2 variabel yang menyimpan value dari function errorInput untuk masing2 phone dan email
+//             dengan contoh seperti code di atas
 
             binding.errorDescFullname.text = errorFullname
-            binding.errorDescPhone.text = errorPhone
-            binding.errorDescEmail.text = errorEmail
+//            TODO: Uncomment code di bawah dan masukkan variabel yang telah anda buat sebelum nya untuk masing2 component phone dan email
+//            binding.errorDescPhone.text =
+//            binding.errorDescEmail.text =
 
             binding.errorDescFullname.visibility = if (validate && errorFullname != null) View.VISIBLE else View.GONE
-            binding.errorDescPhone.visibility = if (validate && errorPhone != null) View.VISIBLE else View.GONE
-            binding.errorDescEmail.visibility = if (validate && errorEmail != null) View.VISIBLE else View.GONE
+//            TODO: Uncomment code di bawah dan sesuaikan penamaan variabel untuk pengecekan validasi dengan variabel yang telah anda buat sebelumnya
+//            binding.errorDescPhone.visibility = if (validate && errorPhone != null) View.VISIBLE else View.GONE
+//            binding.errorDescEmail.visibility = if (validate && errorEmail != null) View.VISIBLE else View.GONE
         }
     }
 
