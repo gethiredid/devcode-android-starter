@@ -53,6 +53,19 @@
             android:paddingVertical="12dp"
             android:layout_marginTop="4dp"/>
 
+        <TextView
+            android:id="@+id/error_desc_fullname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Field nama tidak boleh kosong"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="12sp"
+            android:textColor="@color/red"
+            android:layout_marginTop="4dp"
+            android:layout_marginHorizontal="16dp"
+            android:contentDescription="error-desc-fullname"
+            android:visibility="gone"/>
+
         <!-- No. Telepon -->
         <TextView
             android:layout_width="wrap_content"
@@ -75,12 +88,25 @@
             android:contentDescription="input-telepon"
             android:hint="Masukkan Nomor Telepon"
             android:imeOptions="actionDone"
-            android:inputType="text"
+            android:inputType="phone"
             android:maxLines="1"
             android:layout_marginHorizontal="16dp"
             android:paddingHorizontal="15dp"
             android:paddingVertical="12dp"
             android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/error_desc_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Field nomor telephone tidak boleh kosong"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="12sp"
+            android:textColor="@color/red"
+            android:layout_marginTop="4dp"
+            android:layout_marginHorizontal="16dp"
+            android:contentDescription="error-desc-phone"
+            android:visibility="gone"/>
 
         <!-- Email -->
         <TextView
@@ -104,12 +130,25 @@
             android:contentDescription="input-email"
             android:hint="Masukkan Email"
             android:imeOptions="actionDone"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:maxLines="1"
             android:layout_marginHorizontal="16dp"
             android:paddingHorizontal="15dp"
             android:paddingVertical="12dp"
             android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/error_desc_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Field email tidak boleh kosong"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="12sp"
+            android:textColor="@color/red"
+            android:layout_marginTop="4dp"
+            android:layout_marginHorizontal="16dp"
+            android:contentDescription="error-desc-email"
+            android:visibility="gone"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_submit"

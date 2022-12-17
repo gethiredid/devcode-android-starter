@@ -95,6 +95,20 @@ class RetrieveDataActivity : BaseActivity(), ContactAdapterInterface {
                 }
             }
         }
+
+        retrieveDataViewModel.validateInput.observe(this) { validate ->
+            val errorFullname = retrieveDataViewModel.errorInput("fullname")
+            val errorPhone = retrieveDataViewModel.errorInput("phone")
+            val errorEmail = retrieveDataViewModel.errorInput("email")
+
+            binding.errorDescFullname.text = errorFullname
+            binding.errorDescPhone.text = errorPhone
+            binding.errorDescEmail.text = errorEmail
+
+            binding.errorDescFullname.visibility = if (validate && errorFullname != null) View.VISIBLE else View.GONE
+            binding.errorDescPhone.visibility = if (validate && errorPhone != null) View.VISIBLE else View.GONE
+            binding.errorDescEmail.visibility = if (validate && errorEmail != null) View.VISIBLE else View.GONE
+        }
     }
 
     private fun resetInput() {

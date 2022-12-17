@@ -1,5 +1,6 @@
 package devcode.android.starter.modules.retrieve_data
 
+import android.util.Patterns
 import androidx.lifecycle.MutableLiveData
 import devcode.android.starter.base.BaseViewModel
 import devcode.android.starter.model.ContactItem
@@ -21,6 +22,7 @@ class RetrieveDataViewModel(private var apiRepository: ApiRepository): BaseViewM
     var updateContactStatus = MutableLiveData(RequestStatus.IDLE)
     var deleteContactStatus = MutableLiveData(RequestStatus.IDLE)
     var createEditContactResult = MutableLiveData(CreateEditContactResult.IDLE)
+    var validateInput = MutableLiveData(false)
 
     var contactData: ContactModel? = null
     var newContact: ContactItem? = null
@@ -33,6 +35,23 @@ class RetrieveDataViewModel(private var apiRepository: ApiRepository): BaseViewM
     var email = ""
 
     var onEditing = false
+
+    fun errorInput(key: String): String? {
+        if (validateInput.value == false) return null
+
+        return when (key) {
+            "fullname" -> if (fullname.trim().isEmpty()) "Field nama tidak boleh kosong" else null
+            "phone" -> if (phoneNumber.trim().isEmpty()) "Field nomor telephone tidak boleh kosong" else if (!Patterns.PHONE.matcher(phoneNumber.trim()).matches()) "Format nomor telepon tidak sesuai" else null
+            "email" -> if (email.trim().isEmpty()) "Field email tidak boleh kosong" else if (!Patterns.EMAIL_ADDRESS.matcher(email.trim()).matches()) "Format email tidak sesuai" else null
+            else -> null
+        }
+    }
+
+    fun checkForm(): Boolean {
+        validateInput.value = true
+
+        return  errorInput("fullname") != null || errorInput("phone") != null || errorInput("email") != null
+    }
 
     fun getContactList() {
         if (contactStatus.value == RequestStatus.LOADING) return
@@ -54,6 +73,8 @@ class RetrieveDataViewModel(private var apiRepository: ApiRepository): BaseViewM
 
     fun createContact() {
         if (createContactStatus.value == RequestStatus.LOADING) return
+
+        if (checkForm()) return
 
         createContactStatus.value = RequestStatus.LOADING
 
@@ -79,6 +100,8 @@ class RetrieveDataViewModel(private var apiRepository: ApiRepository): BaseViewM
 
     fun updateContact() {
         if (updateContactStatus.value == RequestStatus.LOADING) return
+
+        if (checkForm()) return
 
         updateContactStatus.value = RequestStatus.LOADING
 
