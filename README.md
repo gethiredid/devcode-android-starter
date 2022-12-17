@@ -1,11 +1,11 @@
-# Devcode Starter using Android Native Level 1
+# Devcode Starter using Android Native Level 4
 
 ## Instruksi Pengerjaan
 
 1. Download source code lewat link yang telah disediakan dari halaman assesment
 2. Extract source code yang sudah terdownload pada perangkat anda
 3. Pastikan sudah terinstall Android Studio di perangkat kalian
-4. Selesaikan challenge yang terdapat pada file `AndroidManifest.xml`, `res/layout/activity_hello.xml`
+4. Selesaikan challenge yang terdapat pada file `ContactAdapter.kt`, `RetrieveDataActivity.kt`, `RetrieveDataViewModel.kt`, `ApiRepository.kt`, `ApiServices.kt`
 
 ## Teknologi yang Digunakan
 

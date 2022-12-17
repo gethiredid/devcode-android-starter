@@ -198,6 +198,6 @@ class RetrieveDataActivity : BaseActivity(), ContactAdapterInterface {
     }
 
     override fun onDeleteClick(contactItem: ContactItem, index: Int) {
-        retrieveDataViewModel.deleteContact(contactItem, index)
+//        TODO: Panggil function yang berada di class RetrieveDataViewModel yang digunakan untuk melakukan delete contact.
     }
 }

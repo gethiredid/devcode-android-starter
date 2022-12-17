@@ -18,7 +18,13 @@ class ApiRepositoryImpl(private val apiServices: ApiServices) : ApiRepository {
 
     override fun createContact(body: CreateContactRequest): Single<CreateContactModel> = apiServices.createContact(body)
 
-    override fun deleteContact(contactId: Int): Single<ResponseBody> = apiServices.deleteContact(contactId)
+    override fun deleteContact(contactId: Int): Single<ResponseBody> {
+//        TODO: Uncomment code di bawah setelah mengerjakan task pada file [ApiServices.kt]
+//        apiServices.deleteContact(contactId)
+    }
 
-    override fun updateContact(contactId: Int, body: CreateContactRequest): Single<CreateContactModel> = apiServices.updateContact(contactId, body)
+    override fun updateContact(contactId: Int, body: CreateContactRequest): Single<CreateContactModel> {
+//        TODO: Uncomment code di bawah setelah mengerjakan task pada file [ApiServices.kt]
+//        apiServices.updateContact(contactId, body)
+    }
 }

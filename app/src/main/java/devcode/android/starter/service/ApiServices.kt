@@ -16,14 +16,16 @@ interface ApiServices {
         @Body body: CreateContactRequest
     ): Single<CreateContactModel>
 
-    @DELETE("/contacts/{contactId}")
-    fun deleteContact(
-        @Path("contactId") contactId: Int,
-    ): Single<ResponseBody>
+//    TODO: Uncomment code di bawah untuk melakukan DELETE contact request.
+//    @DELETE("/contacts/{contactId}")
+//    fun deleteContact(
+//        @Path("contactId") contactId: Int,
+//    ): Single<ResponseBody>
 
-    @PUT("/contacts/{contactId}")
-    fun updateContact(
-        @Path("contactId") contactId: Int,
-        @Body body: CreateContactRequest
-    ): Single<CreateContactModel>
+//    TODO: Uncomment code di bawah untuk melakukan PUT contact request.
+//    @PUT("/contacts/{contactId}")
+//    fun updateContact(
+//        @Path("contactId") contactId: Int,
+//        @Body body: CreateContactRequest
+//    ): Single<CreateContactModel>
 }

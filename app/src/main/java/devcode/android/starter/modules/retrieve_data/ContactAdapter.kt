@@ -49,8 +49,10 @@ class ContactAdapter(val context: Context, val contactAdapterInterface: ContactA
             binding.itemPhone.text = contact.phoneNumber
             binding.itemEmail.text = contact.email
 
-            binding.buttonEdit.contentDescription = "btn-edit-$position"
-            binding.buttonDelete.contentDescription = "btn-delete-$position"
+//            TODO: Uncomment code di bawah untuk memberikan key kepada component di dalam contact item,
+//             ini berguna agar automation test dapat menghapus pada index yang ditelah ditentukan.
+//            binding.buttonEdit.contentDescription = "btn-edit-$position"
+//            binding.buttonDelete.contentDescription = "btn-delete-$position"
 
             binding.buttonEdit.setOnClickListener { contactAdapterInterface.onEditClick(contact) }
             binding.buttonDelete.setOnClickListener { contactAdapterInterface.onDeleteClick(contact, position) }

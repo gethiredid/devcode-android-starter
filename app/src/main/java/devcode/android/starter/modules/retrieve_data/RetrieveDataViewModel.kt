@@ -115,9 +115,7 @@ class RetrieveDataViewModel(private var apiRepository: ApiRepository): BaseViewM
                     deletedContactIndex = index
                     deleteContactStatus.value = RequestStatus.SUCCESS
                 },
-                { cause ->
-                    deleteContactStatus.value = RequestStatus.ERROR
-                }
+                { deleteContactStatus.value = RequestStatus.ERROR }
             ).addToDisposable()
     }
 }
