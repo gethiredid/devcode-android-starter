@@ -1,11 +1,19 @@
 # Devcode Starter using Android Native Level 5
 
+## Hasil Akhir yang Diharapkan
+
+Peserta dapat membuat validasi pada field nomor telepon dan email sebelum melakukan proses submit data kontak yang akan dibuat atau dirubah
+
+## Setup Environment
+
+1. Download source code melalui link yang telah disediakan dari halaman assesment
+2. Extract source code yang sudah terdownload pada perangkat anda
+3. Buka source code yang sudah diextract menggunakan Code Editor Android Studio
+
 ## Instruksi Pengerjaan
 
-1. Download source code lewat link yang telah disediakan dari halaman assesment
-2. Extract source code yang sudah terdownload pada perangkat anda
-3. Pastikan sudah terinstall Android Studio di perangkat kalian
-4. Selesaikan challenge yang terdapat pada file `activity_retrieve_data.xml`, `RetrieveDataActivity.kt`, `RetrieveDataViewModel.kt`
+1. Selesaikan challenge yang terdapat pada file `activity_retrieve_data.xml`, `RetrieveDataActivity.kt`, `RetrieveDataViewModel.kt`
+2. Detail challenge sudah dijelaskan pada setiap TODO comment
 
 ## Teknologi yang Digunakan
 
