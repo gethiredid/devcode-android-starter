@@ -12,8 +12,9 @@ Peserta dapat mengubah dan menghapus data kontak yang sudah ada lalu menampilkan
 
 ## Instruksi Pengerjaan
 
-1. Selesaikan challenge yang terdapat pada file `ContactAdapter.kt`, `RetrieveDataActivity.kt`, `RetrieveDataViewModel.kt`, `ApiRepository.kt`, `ApiServices.kt`
-2. Detail challenge sudah dijelaskan pada setiap TODO comment
+1. Selesaikan semua TODO yang terdapat pada file `ContactAdapter.kt`, `RetrieveDataActivity.kt`, `ApiRepository.kt`, `ApiServices.kt`
+2. Build solusi dari challenge yang sudah dibuat menjadi APK, untuk langkahnya dapat dilihat [disini](#langkah-langkah-build-apk)
+3. Submit APK hasil build ke Halaman Submission Devcode
 
 ## Teknologi yang Digunakan
 
@@ -21,6 +22,6 @@ Peserta dapat mengubah dan menghapus data kontak yang sudah ada lalu menampilkan
 2. [koin](https://github.com/InsertKoinIO/koin)
 3. [rxjava](https://github.com/ReactiveX/RxAndroid)
 
-## Langkah-langkah Build .apk
+## Langkah-langkah Build apk
 
 1. Build .apk seperti biasa, dapat menggunakan versi debug maupun release.
